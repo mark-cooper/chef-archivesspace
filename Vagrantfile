@@ -24,12 +24,21 @@ Vagrant.configure("2") do |config|
         :db => {
           :embedded => false,
         },
+        :proxy => {
+          :enabled => true,
+          :enable_cache => true,
+        },
       },
       :mysql => {
         :bind_address => 'localhost',
         :server_root_password => 'root',
         :server_debian_password => 'root',
         :server_repl_password => 'root',
+      },
+      :nginx => {
+        :enable_rate_limiting => true,
+        :rate_limiting_zone_name => 'blitz',
+	:rate_limit => '8r/s',
       }
     }
 

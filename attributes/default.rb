@@ -31,3 +31,14 @@ default['archivesspace']['solr_url']          = "8090"
 default['archivesspace']['public_url']        = "8081"
 default['archivesspace']['user_registration'] = false
 default['archivesspace']['help_enabled']      = false
+
+# Proxy settings -- apply only if proxy use is true
+default['archivesspace']['proxy']['enabled']               = false
+default['archivesspace']['proxy']['frontend_server_names'] = "staff.archive.org"
+default['archivesspace']['proxy']['public_server_names']   = "archive.org www.archive.org"
+default['archivesspace']['proxy']['ssl_server_name']       = "www.archive.org"
+default['archivesspace']['proxy']['enable_cache']          = false
+default['archivesspace']['proxy']['cache_path']            = "/tmp/nginx/cache"
+default['archivesspace']['proxy']['cache_name']            = "CACHE"
+default['archivesspace']['proxy']['cache_size']            = "1g"
+default['archivesspace']['proxy']['cache_valid']           = "1m"

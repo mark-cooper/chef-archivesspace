@@ -1,0 +1,51 @@
+server {
+    listen 80;
+    server_name <%= @frontend_server_names %>;
+    location / {
+        <% if @enable_rate_limiting %>limit_req zone=<%= @zone %> burst=10 nodelay;<% end %>
+    	<% if @enable_cache %>
+        proxy_cache <%= @cache_name %>;
+        proxy_cache_valid any <%= @cache_valid %>;
+        proxy_cache_use_stale error timeout invalid_header updating http_500 http_502 http_503 http_504;
+    	<% end %>
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Host $host;
+        proxy_pass http://127.0.0.1:<%= @frontend_port %>;
+    }
+}
+server {
+    listen 80;
+    server_name <%= @public_server_names %>;  
+    location / {
+        <% if @enable_rate_limiting %>limit_req zone=<%= @zone %> burst=10 nodelay;<% end %>
+        <% if @enable_cache %>
+        proxy_cache <%= @cache_name %>;
+        proxy_cache_valid any <%= @cache_valid %>;
+        proxy_cache_use_stale error timeout invalid_header updating http_500 http_502 http_503 http_504;
+        <% end %>
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Host $host;
+        proxy_pass http://127.0.0.1:<%= @public_port %>;
+    }
+}
+server {
+    listen 443;
+    server_name <%= @ssl_server_name %>;
+    #ssl on;
+    #ssl_certificate /nginx/keys/server.crt;
+    #ssl_certificate_key /nginx/keys/server.key;
+    #access_log /var/log/nginx/ssl-access.log;
+    #error_log /var/log/nginx/ssl-error.log;
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Host $host;
+        proxy_pass http://127.0.0.1:<%= @frontend_port %>;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        add_header Front-End-Https on;
+        proxy_redirect off;
+    }
+}
+
