@@ -100,14 +100,14 @@ Attributes
     <tr>
         <td>url</td>
         <td>directory url for download</td>
-        <td><tt></tt></td>
-        <td><tt>https://github.com/archivesspace/archivesspace/releases/download</tt></td>
+        <td><tt>...</tt></td>
+        <td><tt>...</tt></td>
     </tr>
     <tr>
         <td>mysql_url</td>
         <td>directory url of the mysql connector</td>
-        <td><tt></tt></td>
-        <td><tt>http://repo1.maven.org/maven2/mysql/mysql-connector-java</tt></td>
+        <td><tt>...</tt></td>
+        <td><tt>...></td>
     </tr>
     <tr>
         <td>mysql_lib</td>
@@ -118,7 +118,7 @@ Attributes
     <tr>
         <td>plugin_url</td>
         <td>git url of a plugin repository</td>
-        <td><tt>https://github.com/mark-cooper/awesome_plugin.git</tt></td>
+        <td><tt>...</tt></td>
         <td><tt>nil</tt></td>
     </tr>
     <tr>
@@ -288,7 +288,7 @@ Notes on the database attributes:
         - database called "name" will be created
         - database user called "user" will be created with "password"
         - all privileges are granted on database "name" for "user"
-    - otherwise mysql will attempt to connect to an external database called "name" with "user" and "password"
+    - otherwise will attempt to connect to an external database called "name" with "user" and "password"
 
 License & Authors
 -----------------
