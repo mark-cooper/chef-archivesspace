@@ -107,7 +107,7 @@ Attributes
         <td>mysql_url</td>
         <td>directory url of the mysql connector</td>
         <td><tt>...</tt></td>
-        <td><tt>...></td>
+        <td><tt>...</td>
     </tr>
     <tr>
         <td>mysql_lib</td>
@@ -261,21 +261,21 @@ Attributes
     </tr>
     <tr>
         <td>name</td>
-        <td></td>
-        <td><tt>['foo.com']</tt></td>
-        <td><tt>5.1.24</tt></td>
+        <td>database name for archivesspace</td>
+        <td><tt>aspace</tt></td>
+        <td><tt>archivesspace user name</tt></td>
     </tr>
     <tr>
         <td>user</td>
-        <td>git url of a plugin repository</td>
-        <td><tt></tt></td>
-        <td><tt>nil</tt></td>
+        <td>name for archivesspace database user</td>
+        <td><tt>aspace</tt></td>
+        <td><tt>archivesspace user name</tt></td>
     </tr>
     <tr>
         <td>password</td>
-        <td>name to give the plugin repository</td>
-        <td><tt>awesome_plugin</tt></td>
-        <td><tt>nil</tt></td>
+        <td>password for archivesspace database user</td>
+        <td><tt>123456</tt></td>
+        <td><tt>archivesspace user name</tt></td>
     </tr>
   </tbody>  
 </table>
