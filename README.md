@@ -138,13 +138,7 @@ Attributes
         <td>indexing frequency in seconds</td>
         <td><tt>60</tt></td>
         <td><tt>30</tt></td>
-    </tr>    
-    <tr>
-        <td>backend_url</td>
-        <td>backend port</td>
-        <td><tt>9089</tt></td>
-        <td><tt>8089</tt></td>
-    </tr>    
+    </tr>
     <tr>
         <td>backend_url</td>
         <td>backend port</td>
