@@ -24,6 +24,7 @@ default['archivesspace']['db']['user']        = default['archivesspace']['user']
 default['archivesspace']['db']['password']    = default['archivesspace']['user']['name']
 
 # ArchivesSpace settings
+default['archivesspace']['directory']         = "#{default['archivesspace']['user']['home']}/archivesspace"
 default['archivesspace']['indexing_frequency']= 30
 default['archivesspace']['backend_url']       = "8089"
 default['archivesspace']['frontend_url']      = "8080"
@@ -33,7 +34,6 @@ default['archivesspace']['user_registration'] = false
 default['archivesspace']['help_enabled']      = false
 
 # Proxy settings -- apply only if proxy use is true
-default['archivesspace']['proxy']['enabled']               = false
 default['archivesspace']['proxy']['frontend_server_names'] = "staff.archive.org"
 default['archivesspace']['proxy']['public_server_names']   = "archive.org www.archive.org"
 default['archivesspace']['proxy']['ssl_server_name']       = "www.archive.org"

@@ -29,7 +29,10 @@ Vagrant.configure("2") do |config|
         },
       },
       :mysql => {
+        :allow_remote_root => false,
         :bind_address => 'localhost',
+        :remove_anonymous_users => true,
+        :remove_test_database => true,
         :server_root_password => 'root',
         :server_debian_password => 'root',
         :server_repl_password => 'root',
@@ -43,6 +46,7 @@ Vagrant.configure("2") do |config|
 
     chef.run_list = [
       "recipe[apt]",
+      "recipe[chef-archivesspace::mysql]",
       "recipe[chef-archivesspace::default]",
       "recipe[chef-archivesspace::proxy]",
       "recipe[chef-archivesspace::monit]",
