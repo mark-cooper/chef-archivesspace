@@ -25,7 +25,6 @@ Vagrant.configure("2") do |config|
           :embedded => false,
         },
         :proxy => {
-          :enabled => true,
           :enable_cache => true,
         },
       },
@@ -44,7 +43,8 @@ Vagrant.configure("2") do |config|
 
     chef.run_list = [
       "recipe[apt]",
-      "recipe[chef-archivesspace]",
+      "recipe[chef-archivesspace::default]",
+      "recipe[chef-archivesspace::monit]",
     ]
   end
 end

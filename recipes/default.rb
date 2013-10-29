@@ -142,6 +142,14 @@ unless node['archivesspace']['db']['embedded']
   end
 end
 
+link "/etc/init.d/archivesspace" do
+  to "#{archivesspace_dir}/archivesspace.sh"
+end
+
+execute "add-archivesspace-init" do
+  command "update-rc.d archivesspace defaults"
+end
+
 bash "archivesspace-start" do
   user "root"
   cwd  "#{archivesspace_dir}"
