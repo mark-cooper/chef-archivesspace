@@ -73,7 +73,28 @@ Example local mysql database Vagrant configuration:
 
       chef.run_list = [
         "recipe[apt]",
+        "recipe[archivesspace::mysql]",
         "recipe[archivesspace::default]",
+      ]
+    end
+
+Nginx can be used as a proxy, and monit for monitoring:
+
+    config.vm.provision :chef_solo do |chef|
+      chef.json = {
+        :archivesspace => {
+          :db => {
+            :embedded => false,
+            :host => "db.server.org",
+          },
+        },
+      }
+
+      chef.run_list = [
+        "recipe[apt]",
+        "recipe[archivesspace::default]",
+        "recipe[archivesspace::proxy]",
+        "recipe[archivesspace::monit]",
       ]
     end
 
@@ -276,13 +297,14 @@ Attributes
 
 Notes on the database attributes:
 
-- If the embedded database is being used (embedded is true) then the mysql settings are ignored
-- If mysql is being used (embedded is false):
-    - mysql will run locally if host is "localhost"
+- If the embedded database is being used (embedded is true) then the other settings are ignored
+- If another database is being used (embedded is false):
+    - mysql will run locally if the recipe is added to the run list
         - database called "name" will be created
         - database user called "user" will be created with "password"
         - all privileges are granted on database "name" for "user"
-    - otherwise will attempt to connect to an external database called "name" with "user" and "password"
+    - there will be an attempt to connect to the database called "name" with "user" and "password"
+        - in the case of a remote database you will need to override the default "localhost" host setting
 
 License & Authors
 -----------------
