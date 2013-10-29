@@ -34,6 +34,7 @@ default['archivesspace']['user_registration'] = false
 default['archivesspace']['help_enabled']      = false
 
 # Proxy settings -- apply only if proxy use is true
+default['archivesspace']['proxy']['enabled']               = false
 default['archivesspace']['proxy']['frontend_server_names'] = "staff.archive.org"
 default['archivesspace']['proxy']['public_server_names']   = "archive.org www.archive.org"
 default['archivesspace']['proxy']['ssl_server_name']       = "www.archive.org"

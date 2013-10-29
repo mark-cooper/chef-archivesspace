@@ -87,6 +87,10 @@ Nginx can be used as a proxy, and monit for monitoring:
             :embedded => false,
             :host => "db.server.org",
           },
+          :proxy => {
+            :enabled => true,
+            :enable_cache => true,
+          },
         },
       }
 

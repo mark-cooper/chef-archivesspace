@@ -25,6 +25,7 @@ Vagrant.configure("2") do |config|
           :embedded => false,
         },
         :proxy => {
+          :enabled => true,
           :enable_cache => true,
         },
       },
