@@ -7,12 +7,13 @@ Vagrant.configure("2") do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.vm.provider "virtualbox" do |v|
     v.customize ["modifyvm", :id, "--memory", 2048]
-  end 
+  end
 
   config.vm.network "private_network", ip: "10.11.12.14"
   config.vm.network :forwarded_port, guest: 80,   host: 3001
   config.vm.network :forwarded_port, guest: 8080, host: 8080
   config.vm.network :forwarded_port, guest: 8081, host: 8081
+  config.vm.network :forwarded_port, guest: 8089, host: 8089
 
   config.berkshelf.enabled = true
   config.vm.synced_folder '.', '/vagrant', disabled: true
@@ -41,7 +42,7 @@ Vagrant.configure("2") do |config|
       :nginx => {
         :enable_rate_limiting => true,
         :rate_limiting_zone_name => 'blitz',
-	:rate_limit => '8r/s',
+        :rate_limit => '8r/s',
       }
     }
 
